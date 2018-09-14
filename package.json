@@ -1,0 +1,15 @@
+{
+  "name": "SearchGitHub",
+  "version": "1.0.0",
+  "description": "*SearchGitHub* is an app created under the direction of [Brad Traversy](https://www.udemy.com/modern-javascript-from-the-beginning/) in his *Modern JavaScript from the Beginning* course.",
+  "main": "app.js",
+  "dependencies": {
+    "dotenv": "^6.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "belqati",
+  "license": "MIT"
+}
