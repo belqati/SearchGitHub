@@ -4,17 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SearchGitHub</title>
-<!--   <link rel="icon" type="image/x-icon" href="public/imgs/project_organization_icon.ico"> -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="icon" type="image/x-icon" href="/imgs/github_icon.ico">
+  <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
   <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-  <h1><i class="fab fa-github-alt"></i> Search GitHub</h1>
-  <p>this is a test for serving it up!</p>
+  <nav class="navbar navbar-dark bg-dark mb-3">
+    <div class="container">
+      <a href="#" class="navbar-brand"><i class="fab fa-github-alt"></i> Search GitHub</a>
+    </div>
+  </nav>
+  <div class="container searchContainer">
+    <div class="search card border-success card-body">
+      <h1>Search GitHub Users</h1>
+      <p class="lead">Fetch a user profile and their repos!</p>
+      <input type="text" id="searchUser" class="form-control" placeholder="GitHub Username">
+    </div>
+    <br>
+    <div id="profile"></div>
+  </div>
 
-<!--   <script src="app.js"></script> -->
+  <footer class="mt-5 p-3 text-center bg-light">Built by belQati &copy; 2018</footer>
+
   <script src="/scripts/github.js"></script>
   <script src="/scripts/ui.js"></script>
+<!--   <script src="app.js"></script> -->
 </body>
 </html>
