@@ -1,18 +1,12 @@
-require('dotenv').config();
-let express = require('express');
-let app = express();
+// Search input
+const searchUser = document.querySelector('#searchUser');
 
-let port = process.env.PORT || process.env.IP;
+// Search input event listener
+searchUser.addEventListener('keyup', (e) => {
+  // Get input text
+  const userText = e.target.value;
 
-app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/public'))
-
-app.get('/', function(req, res){
-  res.render('index');
-  console.log('yoyo');
-});
-
-
-app.listen(port, function(){
-  console.log('SearchGitHub is listening!')
+  if(userText !== ''){
+    console.log(userText);
+  }
 });
