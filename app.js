@@ -21,7 +21,8 @@ searchUser.addEventListener('keyup', (e) => {
           ui.showAlert('User not found!', 'alert alert-warning')
         } else {
           // show profile
-          ui.showProfile(data.profile)
+          ui.showProfile(data.profile);
+          ui.showRepos(data.repos);
         }
     });
   } else {
