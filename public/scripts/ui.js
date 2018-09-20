@@ -5,6 +5,21 @@ class UI {
 
   // display profile in UI
   showProfile(user){
+    // replace null etc. in user object
+    if(user.company === null){
+      user.company = `<em class="unknown">Unknown</em>`
+    };
+
+    if(user.blog === null || user.blog === ''){
+      user.blog = `<a href="#"><em class="unknown">Unknown</em></a>`;
+    } else {
+      user.blog = `<a href="${user.blog}" target="_blank">${user.blog}</a>`;
+    }
+
+    if(user.location === null){
+      user.location = `<em class="unknown">Unknown</em>`
+    }
+
     this.profile.innerHTML = `
       <div class="card card-body mb-3">
         <div class="row">
@@ -19,10 +34,10 @@ class UI {
             <span class="badge badge-info">Following: ${user.following}</span>
             <br><br>
             <ul class="list-group">
-              <li class="list-group-item">Company: ${user.company}</li>
+              <li class="list-group-item">Company: <span class="profileColor">${user.company}</span></li>
               <li class="list-group-item">Website/Blog: ${user.blog}</li>
-              <li class="list-group-item">Location: ${user.location}</li>
-              <li class="list-group-item">Member Since: ${user.created_at}</li>
+              <li class="list-group-item">Location: <span class="profileColor">${user.location}</span></li>
+              <li class="list-group-item">Member Since: <span class="profileColor">${user.created_at.substr(0, 10)}</span></li>
             </ul>
           </div>
         </div>
@@ -35,22 +50,27 @@ class UI {
   // show repos
   showRepos(repos){
     let output = '';
-    repos.forEach(function(repo){
-      output += `
-        <div class="card card-body mb-2">
-          <div class="row">
-            <div class="col-md-6">
-              <a href="${repo.html_url}" target="_blank">${repo.name}</a>
-            </div>
-            <div class="col-md-6">
-              <span class="badge badge-primary">Stars: ${repo.stargazers_count}</span>
-              <span class="badge badge-warning">Watchers: ${repo.watchers_count}</span>
-              <span class="badge badge-success">Forks: ${repo.forks_count}</span>
+
+    if(repos.length === 0){
+      output = `<em class="unknown">This user has no public repos</em>`;
+    } else {
+      repos.forEach(function(repo){
+        output += `
+          <div class="card card-body mb-2">
+            <div class="row">
+              <div class="col-md-6">
+                <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+              </div>
+              <div class="col-md-6">
+                <span class="badge badge-primary">Stars: ${repo.stargazers_count}</span>
+                <span class="badge badge-warning">Watchers: ${repo.watchers_count}</span>
+                <span class="badge badge-success">Forks: ${repo.forks_count}</span>
+              </div>
             </div>
           </div>
-        </div>
-      `;
-    });
+        `;
+      });
+    }
 
     // output repos
     document.querySelector('#repos').innerHTML = output;
@@ -88,8 +108,8 @@ class UI {
     }
   }
 
+  // clear profile when search bar is empty
   clearProfile(){
     this.profile.innerHTML = '';
   }
-
 }
