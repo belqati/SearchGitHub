@@ -6,18 +6,24 @@ class UI {
   // display profile in UI
   showProfile(user){
     // replace null etc. in user object
-    if(user.company === null){
+    if(user.company === null || user.company === undefined){
       user.company = `<em class="unknown">Unknown</em>`
     };
 
-    if(user.blog === null || user.blog === ''){
+    if(user.blog === null || user.blog === '' || user.blog === undefined){
       user.blog = `<a href="#"><em class="unknown">Unknown</em></a>`;
     } else {
       user.blog = `<a href="${user.blog}" target="_blank">${user.blog}</a>`;
     }
 
-    if(user.location === null){
+    if(user.location === null || user.location === undefined){
       user.location = `<em class="unknown">Unknown</em>`
+    }
+
+    if(user.created_at === null || user.created_at === undefined){
+      user.created_at = `<em class="unknown">Unknown</em>`
+    } else {
+      user.created_at = user.created_at.substr(0, 10);
     }
 
     this.profile.innerHTML = `
@@ -37,7 +43,7 @@ class UI {
               <li class="list-group-item">Company: <span class="profileColor">${user.company}</span></li>
               <li class="list-group-item">Website/Blog: ${user.blog}</li>
               <li class="list-group-item">Location: <span class="profileColor">${user.location}</span></li>
-              <li class="list-group-item">Member Since: <span class="profileColor">${user.created_at.substr(0, 10)}</span></li>
+              <li class="list-group-item">Member Since: <span class="profileColor">${user.created_at}</span></li>
             </ul>
           </div>
         </div>
